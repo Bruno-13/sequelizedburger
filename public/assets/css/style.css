@@ -1,0 +1,43 @@
+html, body {
+    min-height: 100%;
+    color: #fff;
+    background-image: url('/assets/img/burgerbkg2.jpg');
+    background-size: 100%;
+    font-family: 'Acme', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.devoured {
+    opacity: 0.5;
+}
+
+.eat {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;    
+}
+
+.devoured {
+    background-color: #000;
+    color: #fff;
+}
+
+.burgerimg {
+    margin-top: 60px;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    letter-spacing: 1px;
+    color: #ffbc00;
+}
+
+form {
+  color: #000;
+}
