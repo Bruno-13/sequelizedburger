@@ -1,5 +1,5 @@
 {
-  "name": "burger",
+  "name": "sequelizedBurger",
   "version": "1.0.0",
   "description": "burger eating app",
   "main": "server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bruno-13/burger.git"
+    "url": "git+https://github.com/Bruno-13/sequelizedBurger.git"
   },
   "keywords": [
     "burger",
@@ -16,13 +16,14 @@
     "node",
     "express",
     "handlebars"
+    "sequelize"
   ],
   "author": "Bruno Fernandes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Bruno-13/burger/issues"
+    "url": "https://github.com/Bruno-13/sequelizedBurger/issues"
   },
-  "homepage": "https://github.com/Bruno-13/burger#readme",
+  "homepage": "https://github.com/Bruno-13/sequelizedBurger#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",

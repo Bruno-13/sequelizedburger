@@ -1,15 +1,21 @@
 var express = require('express');
 var burger = require('../models/burger');
-
+var models = require('../models');
 var router = express.Router();
+var sequelizeConnection = models.sequelize;
 
 // root route
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
+  res.redirect('/index');
+});
+
+// get all burgers
+router.get('/burgers', function(req, res) {
     // call model function to get all burgers
-    burger.selectAll(function(data) {
+    models.burger.findAll().then(function(data) {
         // create object for handlebars
         var hbsObj = {
-            title: 'Eat-Da-Burger!',
+            title: 'Burger-Da-Sequel!',
             burgers: data
         };
         // render page
@@ -18,24 +24,45 @@ router.get('/', function(req, res) {
 });
 
 // add a burger route
-router.post('/', function(req, res) {
+router.post('/burgers/create', function(req, res) {
     // call the model function to add a new burger
-    burger.insertOne(req.body.burger, function(data) {
+    models.burger.create({
+        name: req.body.burger, 
+        devoured: false
+    }).then(function(data) {
         // redirect to root
         res.redirect('/');
     });
 });
 
 // update a burger route
-router.put('/:id', function(req, res) {
+router.put('/burgers/devour/:id', function(req, res) {
     // create update string to update devoured to true
-    var newSetting = 'devoured = true';
+    models.burger.findById(req.params.id).then(function(data) {
+        data.update({
+            devoured: true
+        }).then(function() {
+            res.redirect("/");
+    })
+});
+
+router.get('/burgers/deleteAll', function(req, res) {
+
+        models.burger.destroy({truncate:true
+        }).then(function(){
+            res.redirect("/burgers")
+        })
+});
+
+//route for delete
+router.delete('/burgers/clear/:id', function(req, res) {
     var condition = 'id = ' + req.params.id;
-    // call model function to update a burger
-    burger.updateOne(newSetting, condition, function(data) {
-        // redirect to root
-        res.redirect('/');
-    });
+    models.burger.findById(req.params.id).then(function(data) {
+        data.destroy().then(function(){
+            res.redirect("/burgers");
+        })
+    })
 });
 
 module.exports = router;
+})
